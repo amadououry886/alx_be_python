@@ -3,7 +3,7 @@ def perform_operation(num1, num2, operation):
     if operation == 'add':
         return num1 + num2 
 
-    elif operation == 'substract':
+    elif operation == 'subtract':
         return num1 - num2
     
     elif operation == 'multiply':
@@ -17,7 +17,7 @@ def perform_operation(num1, num2, operation):
         return num1/num2
 
     else:
-       return "Invalid operation Please choose between : add, substract, multiply, divide"
+       return "Invalid operation Please choose between : add, subtract, multiply, divide"
 
 
 from arithmetic_operations import perform_operation
@@ -29,7 +29,7 @@ def main():
     
     num2 = float(input("Enter the second number: "))
 
-    operation = input("Enter the operation : add, substract, multiply, divide: ")
+    operation = input("Enter the operation : add, subtract, multiply, divide: ")
 
     result = perform_operation(num1, num2, operation)
 
