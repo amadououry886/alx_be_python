@@ -1,14 +1,14 @@
 import os
 
 class BankAccount:
-    def __init__(self, initial_balance=100, file_path="account_balance.txt"):
+    def __init__(self, initial_balance=0, file_path="account_balance.txt"):
         """
         Initialize a new BankAccount instance.
 
         :param initial_balance: Optional; The starting balance for the account. Defaults to 0.
         :param file_path: Optional; The file path where the balance will be stored. Defaults to 'account_balance.txt'.
         """
-        self.__account_balance = initial_balance
+        self._account_balance = initial_balance
         self.file_path = file_path
 
         # If the file exists, load the balance; otherwise, save the initial balance
@@ -24,7 +24,7 @@ class BankAccount:
         :param amount: The amount to deposit.
         """
         if amount > 0:
-            self.__account_balance += amount
+            self._account_balance += amount
             self.__save_balance()
 
     def withdraw(self, amount):
@@ -34,8 +34,8 @@ class BankAccount:
         :param amount: The amount to withdraw.
         :return: True if withdrawal was successful, False otherwise.
         """
-        if amount > 0 and self.__account_balance >= amount:
-            self.__account_balance -= amount
+        if amount > 0 and self._account_balance >= amount:
+            self._account_balance -= amount
             self.__save_balance()
             
             return True
@@ -45,7 +45,7 @@ class BankAccount:
         """
         Display the current account balance in a user-friendly format.
         """
-        print(f"Current Balance: ${self.__account_balance:.2f}")
+        print(f"Current Balance: ${self._account_balance:.2f}")
 
     def __save_balance(self):
         """
@@ -53,7 +53,7 @@ class BankAccount:
         """
         try:
             with open(self.file_path, "w") as file:
-                file.write(str(self.__account_balance))
+                file.write(str(self._account_balance))
         except OSError as e:
             print(f"Error saving balance: {e}")
 
@@ -63,7 +63,7 @@ class BankAccount:
         """
         try:
             with open(self.file_path, "r") as file:
-                self.__account_balance = float(file.read())
+                self._account_balance = float(file.read())
         except (OSError, ValueError) as e:
             print(f"Error loading balance: {e}")
-            self.__account_balance = 0
+            self._account_balance = 0
