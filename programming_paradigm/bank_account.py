@@ -1,7 +1,7 @@
 import os
 
 class BankAccount:
-    def __init__(self, initial_balance=0, file_path="account_balance.txt"):
+    def __init__(self, initial_balance=100, file_path="account_balance.txt"):
         """
         Initialize a new BankAccount instance.
 
@@ -37,6 +37,7 @@ class BankAccount:
         if amount > 0 and self.__account_balance >= amount:
             self.__account_balance -= amount
             self.__save_balance()
+            
             return True
         return False
 
