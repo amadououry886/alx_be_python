@@ -1,14 +1,14 @@
-# main.py
-
+## main.py
 import sys
 from robust_division_calculator import safe_divide
 
 def main():
+    # Check if the user has provided the right number of arguments
     if len(sys.argv) != 3:
         print("Usage: python main.py <numerator> <denominator>")
         sys.exit(1)
 
-    # Get numerator and denominator from command line arguments
+    # Extract numerator and denominator from command line arguments
     numerator = sys.argv[1]
     denominator = sys.argv[2]
 
